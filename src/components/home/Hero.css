@@ -1,100 +1,40 @@
 .hero {
   position: relative;
-  padding-top: 80px;
+  perspective: 1000px;
 }
 
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, 
-    rgba(220, 20, 60, 0.05) 0%, 
-    rgba(0, 217, 255, 0.05) 100%
-  );
-  z-index: 0;
-}
-
-.hero-shapes {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.3;
-  animation: float 6s ease-in-out infinite;
-}
-
-.shape-1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(220, 20, 60, 0.4) 0%, transparent 70%);
-  top: 10%;
-  left: -10%;
-  animation-delay: 0s;
-}
-
-.shape-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 217, 255, 0.3) 0%, transparent 70%);
-  top: 40%;
-  right: -10%;
-  animation-delay: 2s;
-}
-
-.shape-3 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-  bottom: 10%;
-  left: 30%;
-  animation-delay: 4s;
+.hero h1 span {
+  display: inline-block;
+  transform-style: preserve-3d;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-30px) translateX(20px);
+    transform: translateY(0px) scale(1);
   }
   50% {
-    transform: translateY(-20px) translateX(-20px);
-  }
-  75% {
-    transform: translateY(-40px) translateX(10px);
+    transform: translateY(-20px) scale(1.05);
   }
 }
 
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bounce 2s infinite;
-}
-
-.scroll-line {
-  width: 2px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, #DC143C);
-  border-radius: 2px;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
     min-height: 100svh;
+    padding-top: 100px;
   }
   
-  .shape {
-    filter: blur(40px);
-  }
-  
-  .shape-1, .shape-2, .shape-3 {
-    width: 250px;
-    height: 250px;
+  .hero h1 {
+    font-size: 2.5rem !important;
   }
 }

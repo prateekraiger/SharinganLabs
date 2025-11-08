@@ -1,26 +1,66 @@
+import { useRef, useEffect } from 'react';
 import { getFeaturedProjects } from '../../data/projects';
 import Button from '../ui/Button';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './FeaturedWork.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FeaturedWork = () => {
   const featuredProjects = getFeaturedProjects();
+  const projectsRef = useRef([]);
+
+  useEffect(() => {
+    projectsRef.current.forEach((project, index) => {
+      gsap.fromTo(
+        project,
+        {
+          y: 100,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: index * 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: project,
+            start: 'top 80%',
+            end: 'top 60%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  }, []);
 
   return (
-    <section className="featured-work py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="featured-work py-32 relative overflow-hidden" data-scroll-section>
+      {/* Background Elements */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
-          <div>
-            <span className="label text-primary mb-4 block">Portfolio</span>
-            <h2 className="heading-2 text-dark mb-4">
-              Featured Work
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20">
+          <div data-scroll data-scroll-speed="0.5">
+            <span className="inline-block px-4 py-2 rounded-full glass-light text-cyan-300 text-sm font-medium mb-6 border border-cyan-500/20">
+              Portfolio
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              Featured <span className="text-gradient">Work</span>
             </h2>
-            <p className="body-large text-gray-600 max-w-xl">
+            <p className="text-lg text-gray-300 max-w-xl">
               Explore our latest projects and see how we've helped businesses
               transform their digital presence.
             </p>
           </div>
-          <Button variant="secondary" className="mt-6 md:mt-0">
+          <Button 
+            variant="secondary" 
+            className="mt-6 md:mt-0 glass-light border border-cyan-500/30 hover:border-cyan-500/60 transition-all"
+          >
             View All Projects
           </Button>
         </div>
@@ -30,54 +70,59 @@ const FeaturedWork = () => {
           {featuredProjects.map((project, index) => (
             <a
               key={project.id}
+              ref={(el) => (projectsRef.current[index] = el)}
               href={`/work/${project.slug}`}
-              className="project-card group block relative overflow-hidden rounded-3xl"
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="project-card group block relative overflow-hidden rounded-2xl glass-light border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="project-image-wrapper relative aspect-[4/3] overflow-hidden bg-gray-200">
+              <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-purple-900/20 to-pink-900/20">
                 <div
-                  className="project-image w-full h-full bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
                   style={{ 
                     backgroundImage: `url(${project.thumbnail})`,
-                    backgroundColor: '#e5e7eb'
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)'
                   }}
                 />
                 
-                {/* Overlay */}
-                <div className="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060010] via-transparent to-transparent opacity-60"></div>
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-white/90 text-sm mb-2">{project.category}</p>
+                    <p className="text-purple-300 text-sm font-semibold mb-2">{project.category}</p>
+                    <div className="flex items-center text-white font-semibold">
+                      View Case Study
+                      <span className="ml-2 transform group-hover:translate-x-2 transition-transform">→</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Project Info */}
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-3">
+              <div className="p-8">
+                <div className="flex items-center gap-2 mb-4 flex-wrap">
                   {project.tags.slice(0, 3).map((tag, idx) => (
                     <span
                       key={idx}
-                      className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full font-medium"
+                      className="text-xs px-3 py-1.5 glass-light text-purple-300 rounded-full font-medium border border-purple-500/20"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <h3 className="heading-4 text-dark mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-gradient-purple transition-all">
                   {project.title}
                 </h3>
                 
-                <p className="body text-gray-600 mb-4">
+                <p className="text-gray-400 leading-relaxed">
                   {project.shortDescription}
                 </p>
-
-                <div className="flex items-center text-primary font-semibold group-hover:gap-2 transition-all">
-                  View Case Study
-                  <span className="ml-1">→</span>
-                </div>
               </div>
+
+              {/* Corner Glow */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </a>
           ))}
         </div>
