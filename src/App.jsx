@@ -21,7 +21,6 @@ function App() {
         el: scrollRef.current,
         smooth: true,
         multiplier: 1,
-        class: 'is-revealed',
         smartphone: {
           smooth: true
         },
@@ -29,13 +28,22 @@ function App() {
           smooth: true
         }
       });
-    }
 
-    return () => {
-      if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy();
-      }
-    };
+      const onResize = () => {
+        if (locomotiveScrollRef.current) {
+          locomotiveScrollRef.current.update();
+        }
+      };
+
+      window.addEventListener('resize', onResize);
+
+      return () => {
+        if (locomotiveScrollRef.current) {
+          locomotiveScrollRef.current.destroy();
+        }
+        window.removeEventListener('resize', onResize);
+      };
+    }
   }, []);
 
   return (
