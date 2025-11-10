@@ -11,7 +11,7 @@ const Hero = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      
+
       tl.from(titleRef.current.children, {
         y: 120,
         opacity: 0,
@@ -37,11 +37,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <section 
-      ref={heroRef} 
-      className="hero min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+    <section
+      ref={heroRef}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       data-scroll
-      data-scroll-speed="1"
+      data-scroll-speed="-2"
     >
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden">
@@ -66,17 +66,17 @@ const Hero = () => {
           <span className="block text-gradient">Digital Experiences</span>
           <span className="block">Into Masterpieces</span>
         </h1>
-        
+
         <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Full-service design and development agency crafting exceptional 
+          Full-service design and development agency crafting exceptional
           digital experiences that captivate audiences and drive results.
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="default" size="lg">
+          <Button variant="primary" size="large" className="btn-gradient btn-primary-glow">
             View Our Work
           </Button>
-          <Button variant="secondary" size="lg">
+          <Button variant="secondary" size="large" className="glass">
             Start a Project
           </Button>
         </div>
