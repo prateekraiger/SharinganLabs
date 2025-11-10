@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { NAVIGATION_LINKS, SITE_CONFIG } from '../../lib/constants';
 import Button from '../ui/Button';
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
+import { Menu } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,24 +19,26 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'glass' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        isScrolled ? 'bg-background/80 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="text-2xl font-bold text-gradient-purple hover:scale-105 transition-transform duration-300 flex items-center gap-2">
-          <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="/" className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-300 flex items-center gap-2 group">
+          <svg className="w-8 h-8 group-hover:rotate-180 transition-transform duration-500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="16" r="14" stroke="url(#gradient)" strokeWidth="2"/>
             <path d="M16 8L20 16L16 24L12 16L16 8Z" fill="url(#gradient)"/>
             <defs>
               <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
-                <stop offset="0%" stopColor="#8B5CF6"/>
-                <stop offset="100%" stopColor="#EC4899"/>
+                <stop offset="0%" stopColor="var(--color-primary)"/>
+                <stop offset="100%" stopColor="var(--color-accent)"/>
               </linearGradient>
             </defs>
           </svg>
-          {SITE_CONFIG.name}
+          <span className="text-gradient" style={{"--gradient-from": "var(--color-primary)", "--gradient-to": "var(--color-accent)"}}>
+            {SITE_CONFIG.name}
+          </span>
         </a>
 
         {/* Desktop Navigation */}
@@ -43,10 +47,9 @@ const Header = () => {
             <li key={link.name}>
               <a
                 href={link.href}
-                className="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
           ))}
@@ -54,46 +57,39 @@ const Header = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button variant="primary" size="medium" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 border-0 shadow-lg shadow-purple-500/50">
-            Start a Project
-          </Button>
+          <Button>Start a Project</Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden flex flex-col space-y-1.5 z-50 relative"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-8 h-0.5 bg-purple-400 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`block w-8 h-0.5 bg-purple-400 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-8 h-0.5 bg-purple-400 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-        </button>
-      </nav>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 glass z-40 pt-24 px-6 backdrop-blur-2xl">
-          <ul className="flex flex-col space-y-6">
-            {NAVIGATION_LINKS.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="text-2xl font-semibold text-white hover:text-gradient-purple transition-colors block"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-            <li className="pt-4">
-              <Button variant="primary" size="large" className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
-                Start a Project
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-4 w-4" />
               </Button>
-            </li>
-          </ul>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>{SITE_CONFIG.name}</SheetTitle>
+              </SheetHeader>
+              <div className="grid gap-4 py-4">
+                {NAVIGATION_LINKS.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+              <SheetFooter>
+                <Button className="w-full">Start a Project</Button>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
         </div>
-      )}
+      </nav>
     </header>
   );
 };

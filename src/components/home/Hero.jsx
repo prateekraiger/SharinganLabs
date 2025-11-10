@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Button from '../ui/Button';
+import MagneticButton from '../ui/MagneticButton';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -39,9 +40,9 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+      className="hero min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       data-scroll
-      data-scroll-speed="-2"
+      data-scroll-speed="1"
     >
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden">
@@ -63,7 +64,7 @@ const Hero = () => {
 
         <h1 ref={titleRef} className="heading-1 text-white mb-6 text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
           <span className="block">We Transform</span>
-          <span className="block text-gradient">Digital Experiences</span>
+          <span className="block bg-clip-text text-transparent bg-text-gradient">Digital Experiences</span>
           <span className="block">Into Masterpieces</span>
         </h1>
 
@@ -73,26 +74,30 @@ const Hero = () => {
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="primary" size="large" className="btn-gradient btn-primary-glow">
-            View Our Work
-          </Button>
-          <Button variant="secondary" size="large" className="glass">
-            Start a Project
-          </Button>
+          <MagneticButton>
+            <Button variant="default" size="lg">
+              View Our Work
+            </Button>
+          </MagneticButton>
+          <MagneticButton>
+            <Button variant="secondary" size="lg">
+              Start a Project
+            </Button>
+          </MagneticButton>
         </div>
 
         {/* Stats */}
         <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
           <div className="text-center" data-scroll data-scroll-speed="0.5">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">250+</div>
+            <div className="text-4xl font-bold bg-clip-text text-transparent bg-text-gradient mb-2">250+</div>
             <div className="text-sm text-gray-400">Projects Delivered</div>
           </div>
           <div className="text-center" data-scroll data-scroll-speed="0.6">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">50+</div>
+            <div className="text-4xl font-bold bg-clip-text text-transparent bg-text-gradient mb-2">50+</div>
             <div className="text-sm text-gray-400">Happy Clients</div>
           </div>
           <div className="text-center" data-scroll data-scroll-speed="0.7">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">15+</div>
+            <div className="text-4xl font-bold bg-clip-text text-transparent bg-text-gradient mb-2">15+</div>
             <div className="text-sm text-gray-400">Awards Won</div>
           </div>
         </div>
