@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Button from '../ui/Button';
-import './Hero.css';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -74,11 +73,10 @@ const Hero = () => {
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="primary" size="large" className="group relative overflow-hidden">
-            <span className="relative z-10">View Our Work</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <Button variant="default" size="lg">
+            View Our Work
           </Button>
-          <Button variant="secondary" size="large" className="glass-light border border-purple-500/30 hover:border-purple-500/60 transition-all">
+          <Button variant="secondary" size="lg">
             Start a Project
           </Button>
         </div>

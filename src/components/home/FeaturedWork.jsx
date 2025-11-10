@@ -3,7 +3,6 @@ import { getFeaturedProjects } from '../../data/projects';
 import Button from '../ui/Button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './FeaturedWork.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,7 +36,7 @@ const FeaturedWork = () => {
   }, []);
 
   return (
-    <section className="featured-work py-32 relative overflow-hidden" data-scroll-section>
+    <section className="py-32 relative overflow-hidden" data-scroll-section>
       {/* Background Elements */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
@@ -47,14 +46,13 @@ const FeaturedWork = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20">
           <div data-scroll data-scroll-speed="0.5">
             <span className="inline-block px-4 py-2 rounded-full glass-light text-cyan-300 text-sm font-medium mb-6 border border-cyan-500/20">
-              Portfolio
+              Our Work
             </span>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Featured <span className="text-gradient">Work</span>
+              Featured <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-xl">
-              Explore our latest projects and see how we've helped businesses
-              transform their digital presence.
+              A collection of our latest and greatest projects.
             </p>
           </div>
           <Button 
@@ -72,7 +70,7 @@ const FeaturedWork = () => {
               key={project.id}
               ref={(el) => (projectsRef.current[index] = el)}
               href={`/work/${project.slug}`}
-              className="project-card group block relative overflow-hidden rounded-2xl glass-light border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500"
+              className="group block relative overflow-hidden rounded-2xl glass-light border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500"
             >
               {/* Project Image */}
               <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-purple-900/20 to-pink-900/20">

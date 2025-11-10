@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { testimonials } from '../../data/testimonials';
-import './Testimonials.css';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,7 +17,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="testimonials-section py-32 relative overflow-hidden" data-scroll-section>
+    <section className="py-32 relative overflow-hidden" data-scroll-section>
       {/* Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
@@ -27,7 +26,7 @@ const Testimonials = () => {
         {/* Section Header */}
         <div className="text-center mb-20" data-scroll data-scroll-speed="0.5">
           <span className="inline-block px-4 py-2 rounded-full glass-light text-pink-300 text-sm font-medium mb-6 border border-pink-500/20">
-            Testimonials
+            Client Testimonials
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             What Our <span className="text-gradient">Clients Say</span>
@@ -35,11 +34,11 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonial Carousel */}
-        <div className="testimonial-carousel relative min-h-[400px]">
+        <div className="relative min-h-[400px]">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className={`testimonial-slide absolute inset-0 transition-all duration-700 ${
+              className={`absolute inset-0 transition-all duration-700 ${
                 index === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
               }`}
             >

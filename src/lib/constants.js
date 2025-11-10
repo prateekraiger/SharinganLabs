@@ -3,20 +3,20 @@
  */
 
 export const SITE_CONFIG = {
-  name: 'SharinganLabs',
-  tagline: 'We Transform Visions Into Digital Masterpieces',
-  description: 'Award-winning full-service design and development agency specializing in UI/UX design, web development, mobile apps, and brand design.',
+  name: 'Sharingan Labs',
+  tagline: 'Crafting Digital Excellence',
+  description: 'A digital design and development agency that creates award-winning websites, mobile apps, and brands.',
   url: 'https://sharinganlabs.com',
   email: 'hello@sharinganlabs.com',
   phone: '+1 (555) 123-4567',
   address: 'San Francisco, CA',
   social: {
-    twitter: 'https://twitter.com/sharinganlabs',
-    linkedin: 'https://linkedin.com/company/sharinganlabs',
-    instagram: 'https://instagram.com/sharinganlabs',
-    dribbble: 'https://dribbble.com/sharinganlabs',
-    behance: 'https://behance.net/sharinganlabs',
-    github: 'https://github.com/sharinganlabs'
+    twitter: 'https://twitter.com',
+    linkedin: 'https://linkedin.com',
+    instagram: 'https://instagram.com',
+    dribbble: 'https://dribbble.com',
+    behance: 'https://behance.net',
+    github: 'https://github.com'
   }
 };
 
@@ -24,7 +24,7 @@ export const NAVIGATION_LINKS = [
   { name: 'Services', href: '/services' },
   { name: 'Work', href: '/work' },
   { name: 'About', href: '/about' },
-  { name: 'Insights', href: '/insights' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' }
 ];
 
