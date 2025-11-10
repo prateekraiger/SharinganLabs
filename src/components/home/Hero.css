@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   perspective: 1000px;
+  overflow: hidden;
 }
 
 .hero h1 span {
@@ -19,13 +20,52 @@
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 0.15;
+    opacity: 0.2;
     transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(1.1);
+    opacity: 0.35;
+    transform: scale(1.15);
   }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+/* Particle effect */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -10px) rotate(90deg);
+  }
+  50% {
+    transform: translate(-5px, -20px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-10px, -10px) rotate(270deg);
+  }
+}
+
+/* Glass card hover effect */
+.glass-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
 }
 
 @media (max-width: 768px) {

@@ -2,12 +2,15 @@
  * Utility functions for SharinganLabs website
  */
 
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 /**
- * Combine class names conditionally
+ * Combine class names conditionally with Tailwind merge
  */
-export const cn = (...classes) => {
-  return classes.filter(Boolean).join(' ');
-};
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 
 /**
  * Debounce function for performance optimization

@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Button from '../ui/Button';
+import { Button } from '../ui/shadcn/button';
+import { Badge } from '../ui/shadcn/badge';
+import { Sparkles, Zap, TrendingUp, ArrowRight } from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
@@ -44,11 +46,12 @@ const Hero = () => {
       data-scroll
       data-scroll-speed="1"
     >
-      {/* Animated Background Orbs */}
+      {/* Animated Background Orbs - Enhanced */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-600/25 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-600/15 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-3/4 left-1/3 w-[400px] h-[400px] bg-indigo-600/20 rounded-full blur-[90px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       {/* Grid Pattern Overlay */}
@@ -56,46 +59,57 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="mb-6 inline-block">
-          <span className="px-4 py-2 rounded-full glass-light text-purple-300 text-sm font-medium border border-purple-500/20">
-            ✨ Award-Winning Design Agency
-          </span>
+        <div className="mb-8 inline-block">
+          <Badge variant="glass" className="px-6 py-3 text-base font-semibold animate-pulse">
+            <Sparkles className="w-4 h-4 mr-2 inline" />
+            Award-Winning AI & Design Agency
+          </Badge>
         </div>
 
-        <h1 ref={titleRef} className="heading-1 text-white mb-6 text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-          <span className="block">We Transform</span>
-          <span className="block text-gradient">Digital Experiences</span>
-          <span className="block">Into Masterpieces</span>
+        <h1 ref={titleRef} className="heading-1 text-white mb-8 text-5xl md:text-7xl lg:text-[120px] font-extrabold leading-[1.1] tracking-tight">
+          <span className="block">We Build</span>
+          <span className="block text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient">
+            AI-Powered
+          </span>
+          <span className="block">Digital Products</span>
         </h1>
         
-        <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Full-service design and development agency crafting exceptional 
-          digital experiences that captivate audiences and drive results.
+        <p ref={subtitleRef} className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
+          Full-service AI & design agency building intelligent applications with 
+          <span className="text-purple-400 font-medium"> GPT-4, Claude, Gemini</span>, and cutting-edge tech.
+          <br className="hidden md:block" />
+          Transform your vision into reality with our expert team.
         </p>
 
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="primary" size="large" className="group relative overflow-hidden">
-            <span className="relative z-10">View Our Work</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <Button size="xl" className="group relative overflow-hidden shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/70">
+            <Zap className="w-5 h-5 mr-2" />
+            View AI Projects
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button variant="secondary" size="large" className="glass-light border border-purple-500/30 hover:border-purple-500/60 transition-all">
+          <Button variant="glass" size="xl" className="group">
+            <TrendingUp className="w-5 h-5 mr-2" />
             Start a Project
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-          <div className="text-center" data-scroll data-scroll-speed="0.5">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">250+</div>
-            <div className="text-sm text-gray-400">Projects Delivered</div>
+        {/* Stats - Enhanced */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="text-center glass-light rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:scale-105" data-scroll data-scroll-speed="0.5">
+            <div className="text-5xl font-black text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-3">300+</div>
+            <div className="text-sm text-gray-300 font-medium">AI Projects</div>
           </div>
-          <div className="text-center" data-scroll data-scroll-speed="0.6">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">50+</div>
-            <div className="text-sm text-gray-400">Happy Clients</div>
+          <div className="text-center glass-light rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:scale-105" data-scroll data-scroll-speed="0.6">
+            <div className="text-5xl font-black text-gradient bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-cyan-400 mb-3">100+</div>
+            <div className="text-sm text-gray-300 font-medium">Happy Clients</div>
           </div>
-          <div className="text-center" data-scroll data-scroll-speed="0.7">
-            <div className="text-4xl font-bold text-gradient-purple mb-2">15+</div>
-            <div className="text-sm text-gray-400">Awards Won</div>
+          <div className="text-center glass-light rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:scale-105" data-scroll data-scroll-speed="0.7">
+            <div className="text-5xl font-black text-gradient bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 mb-3">25+</div>
+            <div className="text-sm text-gray-300 font-medium">Awards Won</div>
+          </div>
+          <div className="text-center glass-light rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:scale-105" data-scroll data-scroll-speed="0.8">
+            <div className="text-5xl font-black text-gradient bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400 mb-3">99%</div>
+            <div className="text-sm text-gray-300 font-medium">Satisfaction</div>
           </div>
         </div>
 
