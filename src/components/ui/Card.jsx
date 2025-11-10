@@ -10,8 +10,8 @@ const Card = ({
   return (
     <div
       className={cn(
-        'bg-white rounded-2xl p-6 shadow-lg transition-all duration-300',
-        hover && 'hover:shadow-2xl hover:-translate-y-2 cursor-pointer',
+        'glass rounded-2xl p-6 transition-all duration-300',
+        hover && 'hover:glow-purple hover:-translate-y-2 cursor-pointer',
         className
       )}
       onClick={onClick}
