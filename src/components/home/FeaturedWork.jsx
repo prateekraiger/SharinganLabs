@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { getFeaturedProjects } from '../../data/projects';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 

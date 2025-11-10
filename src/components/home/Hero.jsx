@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 
 const Hero = () => {
   const heroRef = useRef(null);
