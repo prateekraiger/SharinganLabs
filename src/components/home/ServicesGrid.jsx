@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { services } from '../../data/services';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './ServicesGrid.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,7 +41,7 @@ const ServicesGrid = () => {
   return (
     <section 
       ref={sectionRef}
-      className="services-section py-32 relative overflow-hidden"
+      className="py-32 relative overflow-hidden"
       data-scroll-section
     >
       {/* Background Elements */}
@@ -53,14 +52,13 @@ const ServicesGrid = () => {
         {/* Section Header */}
         <div className="text-center mb-20" data-scroll data-scroll-speed="0.5">
           <span className="inline-block px-4 py-2 rounded-full glass-light text-purple-300 text-sm font-medium mb-6 border border-purple-500/20">
-            What We Do
+            Our Services
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Our <span className="text-gradient">Services</span>
+            What We <span className="text-gradient">Do</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            We offer a comprehensive suite of design and development services
-            to bring your digital vision to life.
+            We provide a wide range of services to help you build and grow your business.
           </p>
         </div>
 
@@ -70,7 +68,7 @@ const ServicesGrid = () => {
             <div
               key={service.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="service-card group relative p-8 rounded-2xl glass-light border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500 cursor-pointer overflow-hidden"
+              className="group relative p-8 rounded-2xl glass-light border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {/* Card Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-pink-600/0 group-hover:from-purple-600/10 group-hover:to-pink-600/10 transition-all duration-500 rounded-2xl"></div>

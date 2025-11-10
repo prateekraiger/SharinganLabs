@@ -11,7 +11,7 @@ const Hero = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      
+
       tl.from(titleRef.current.children, {
         y: 120,
         opacity: 0,
@@ -37,8 +37,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <section 
-      ref={heroRef} 
+    <section
+      ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       data-scroll
       data-scroll-speed="-2"
@@ -66,9 +66,9 @@ const Hero = () => {
           <span className="block text-gradient">Digital Experiences</span>
           <span className="block">Into Masterpieces</span>
         </h1>
-        
+
         <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Full-service design and development agency crafting exceptional 
+          Full-service design and development agency crafting exceptional
           digital experiences that captivate audiences and drive results.
         </p>
 
