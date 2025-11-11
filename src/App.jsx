@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import "./index.css";
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Layout from './components/layout/Layout';
 import Hero from './components/home/Hero';
+import About from './components/home/About';
 import ServicesGrid from './components/home/ServicesGrid';
 import FeaturedWork from './components/home/FeaturedWork';
 import Testimonials from './components/home/Testimonials';
@@ -48,16 +48,17 @@ function App() {
 
   return (
     <div ref={scrollRef} data-scroll-container className="w-full min-h-screen relative">
-      <Header />
-      <main className="relative z-10" data-scroll-section>
-        <Hero />
-        <ServicesGrid />
-        <FeaturedWork />
-        <Testimonials />
-        <ClientLogos />
-        <CTASection />
-      </main>
-      <Footer />
+      <Layout>
+        <div data-scroll-section>
+          <Hero />
+          <About />
+          <ServicesGrid />
+          <FeaturedWork />
+          <Testimonials />
+          <ClientLogos />
+          <CTASection />
+        </div>
+      </Layout>
     </div>
   );
 }
